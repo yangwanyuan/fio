@@ -1315,6 +1315,10 @@ if test "$disable_rbd" != "yes"  && compile_prog "" "-lrbd -lrados" "rbd"; then
 fi
 echo "Rados Block Device engine     $rbd"
 
+###########################################
+LIBS="-lckvdb -lhlkvds $LIBS"
+kvdb="yes"
+echo "KVDB engine                   $kvdb"
 ##########################################
 # check for rbd_invaidate_cache()
 rbd_inval="no"
@@ -1804,6 +1808,9 @@ if test "$ipv6" = "yes" ; then
 fi
 if test "$rbd" = "yes" ; then
   output_sym "CONFIG_RBD"
+fi
+if test "$kvdb" = "yes" ; then
+  output_sym "CONFIG_KVDB"
 fi
 if test "$rbd_inval" = "yes" ; then
   output_sym "CONFIG_RBD_INVAL"
