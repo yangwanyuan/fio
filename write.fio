@@ -1,0 +1,14 @@
+[job]
+thread
+numjobs=8
+iodepth=1
+group_reporting
+ioengine=kvdb
+kvdb_name=/dev/sdb4
+disable_cache=1
+;cache_size=1024000,50
+;cache_isDedup=0
+;cache_policy=0
+rw=randwrite
+size=1000m
+bs=4k
